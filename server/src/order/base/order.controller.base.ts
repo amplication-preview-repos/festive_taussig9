@@ -45,6 +45,9 @@ export class OrderControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
+  @swagger.ApiBody({
+    type: OrderCreateInput,
+  })
   async createOrder(@common.Body() data: OrderCreateInput): Promise<Order> {
     return await this.service.createOrder({
       data: {
@@ -187,6 +190,9 @@ export class OrderControllerBase {
   })
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
+  })
+  @swagger.ApiBody({
+    type: OrderUpdateInput,
   })
   async updateOrder(
     @common.Param() params: OrderWhereUniqueInput,
